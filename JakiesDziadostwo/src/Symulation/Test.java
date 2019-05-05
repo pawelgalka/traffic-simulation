@@ -1,13 +1,12 @@
 package src.Symulation;
 
 
-import src.Model.Lane;
-import src.Model.Road;
+import src.Model.Road.Lane;
+import src.Model.Road.Road;
 import src.Model.Vehicle;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Random;
 
 public class Test {
     public static void main(String[] args) throws Throwable{

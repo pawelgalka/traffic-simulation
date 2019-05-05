@@ -1,8 +1,8 @@
 package src.Symulation;
 
 
-import src.Model.Lane;
-import src.Model.Road;
+import src.Model.Road.Lane;
+import src.Model.Road.Road;
 
 import java.util.concurrent.TimeUnit;
 
