@@ -30,15 +30,13 @@ public class Lane {
     private void decelerate(int index) {
         if (index == 0) return;
         else {
-            if (listOfVehicles.get(index).getVelocity() >= Math.abs(listOfVehicles.get(index).getPositionX() - listOfVehicles.get(index - 1).getPositionX()) ) {
-                //System.out.print("AAAA");
-                //System.out.println(Math.abs(listOfVehicles.get(index).getPositionX()-listOfVehicles.get(index-1).getPositionX())-1+" "+ listOfVehicles.get(index).getVelocity()+" "+index);
-                //System.out.print(listOfVehicles.get(index).getPositionX()+" "+listOfVehicles.get(index-1).getPositionX());
-                listOfVehicles.get(index).setVelocity(Math.abs(listOfVehicles.get(index).getPositionX() - listOfVehicles.get(index - 1).getPositionX()));
-            } else if (Math.abs(listOfVehicles.get(index).getPositionX()+listOfVehicles.get(index).getVelocity()-listOfVehicles.get(index-1).getPositionX()+listOfVehicles.get(index-1).getVelocity())==1) {
-                listOfVehicles.get(index).setVelocity(0);
-                listOfVehicles.get(index).setPositionX(listOfVehicles.get(index-1).getPositionX()-1);
-                System.out.println("asdxdad");
+            Vehicle currentVehicle = listOfVehicles.get(index);
+            Vehicle previousVehicle = listOfVehicles.get(index-1);
+
+            if (currentVehicle.getVelocity() >= Math.abs(currentVehicle.getPositionX() - previousVehicle.getPositionX()) ) {
+                System.out.println(currentVehicle.getPositionX()+ " " + currentVehicle.getVelocity() +" "+ previousVehicle.getPositionX() + " " + previousVehicle.getVelocity());
+                currentVehicle.setPositionX(listOfVehicles.get(index).getPositionX());
+                currentVehicle.setVelocity(0);
             }
         }
     }
