@@ -1,7 +1,8 @@
-package Model;
+package src.Model;
+
+import src.Model.Lane;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class Road {
     private int id;

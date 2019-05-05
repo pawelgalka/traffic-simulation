@@ -1,11 +1,12 @@
-package Symulation;
+package src.Symulation;
 
-import Model.Lane;
-import Model.Road;
-import Model.Vehicle;
+import src.Model.Lane;
+import src.Model.Road;
+import src.Model.Vehicle;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) throws Throwable{
@@ -21,13 +22,14 @@ public class Main {
         Road road = new Road(new ArrayList(Arrays.asList(left1,left2)), new ArrayList(Arrays.asList(right1,right2)));
 
         int id=0;
+        Random r = new Random();
         while(true){
             Vehicle tmp;
-
+            int vehSpeed= r.nextInt(3)+2;
             if(true) {
                 //System.out.print(id);
                 int random = (int) (Math.random() * 4);
-                tmp = new Vehicle(++id, 0,random+1,5);
+                tmp = new Vehicle(++id, 0, random + 1, vehSpeed);
                 //System.out.print(random);
                 int rand = (int)(Math.random()*10);
 

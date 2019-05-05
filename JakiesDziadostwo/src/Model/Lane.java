@@ -1,4 +1,4 @@
-package Model;
+package src.Model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +15,7 @@ public class Lane {
     }
 
     public enum DIRECTION {
-        LEFT,RIGHT;
+        LEFT,RIGHT
     }
 
     public Lane add(Vehicle x){
@@ -27,18 +27,21 @@ public class Lane {
         listOfVehicles.get(index).accelerate();
     }
 
-    private void decelerate(int index){
-        if(index == 0) return;
-        else{
-            if (listOfVehicles.get(index).getVelocity()> Math.abs(listOfVehicles.get(index).getPositionX()-listOfVehicles.get(index-1).getPositionX())-1){
+    private void decelerate(int index) {
+        if (index == 0) return;
+        else {
+            if (listOfVehicles.get(index).getVelocity() >= Math.abs(listOfVehicles.get(index).getPositionX() - listOfVehicles.get(index - 1).getPositionX()) ) {
                 //System.out.print("AAAA");
                 //System.out.println(Math.abs(listOfVehicles.get(index).getPositionX()-listOfVehicles.get(index-1).getPositionX())-1+" "+ listOfVehicles.get(index).getVelocity()+" "+index);
                 //System.out.print(listOfVehicles.get(index).getPositionX()+" "+listOfVehicles.get(index-1).getPositionX());
-                listOfVehicles.get(index).setVelocity(    Math.abs(listOfVehicles.get(index).getPositionX()-listOfVehicles.get(index-1).getPositionX()));
+                listOfVehicles.get(index).setVelocity(Math.abs(listOfVehicles.get(index).getPositionX() - listOfVehicles.get(index - 1).getPositionX()));
+            } else if (Math.abs(listOfVehicles.get(index).getPositionX()+listOfVehicles.get(index).getVelocity()-listOfVehicles.get(index-1).getPositionX()+listOfVehicles.get(index-1).getVelocity())==1) {
+                listOfVehicles.get(index).setVelocity(0);
+                listOfVehicles.get(index).setPositionX(listOfVehicles.get(index-1).getPositionX()-1);
+                System.out.println("asdxdad");
             }
         }
     }
-
     private void randomslow(int index){
         if (listOfVehicles.get(index).getSlowProbability()>Math.random()){
             listOfVehicles.get(index).setVelocity(listOfVehicles.get(index).getVelocity()-1);
