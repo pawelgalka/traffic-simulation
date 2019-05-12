@@ -2,7 +2,7 @@ package src.Model;
 
 public class Vehicle {
     final private int id;
-    private int positionX;
+    //private int positionX;
     private int velocity;
     private int maxVelocity;
     final private double slowProbability;
@@ -14,27 +14,20 @@ public class Vehicle {
     }
 
 
-    public Vehicle(int id_, int positionX_, int velocity_, int maxVelocity_) {
+    public Vehicle(int id_, int velocity_, int maxVelocity_) {
         id = id_;
-        positionX = positionX_;
         velocity = velocity_;
         maxVelocity = maxVelocity_;
         slowProbability = 0.05;
     }
 
-    public Vehicle(int id_, int positionX_, int velocity_, int maxVelocity_,int slowProbability_) {
+    public Vehicle(int id_, int velocity_, int maxVelocity_,int slowProbability_) {
         id = id_;
-        positionX = positionX_;
         velocity = velocity_;
         maxVelocity = maxVelocity_;
         slowProbability = slowProbability_;
     }
 
-    public int check(Vehicle o){
-        if(positionX+velocity < o.positionX+o.velocity)
-            return 0;
-        return o.positionX+o.velocity - positionX+velocity -1;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -79,22 +72,12 @@ public class Vehicle {
         decelerate();
     }
 
-    public void move(){
-        //TODO sprawdzanie czy koniec drogi
-        positionX += velocity;
-    }
+
 
     public int getId() {
         return id;
     }
 
-    public int getPositionX() {
-        return positionX;
-    }
-
-    public void setPositionX(int positionX) {
-        this.positionX = positionX;
-    }
 
     public int getVelocity() {
         return velocity;
@@ -106,6 +89,6 @@ public class Vehicle {
 
     @Override
     public String toString() {
-        return id + " " + positionX+ " " + velocity;
+        return id + " " + velocity;
     }
 }

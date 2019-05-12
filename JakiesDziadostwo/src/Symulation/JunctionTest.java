@@ -18,19 +18,29 @@ public class JunctionTest {
 
         int i=0;
 
-        Lane left1 = new Lane(15, Lane.DIRECTION.LEFT);
-        Lane right1 = new Lane(15, Lane.DIRECTION.RIGHT);
+        Lane left1 = new Lane(15, Lane.DIRECTION.LEFT,true);
+        Lane right1 = new Lane(15, Lane.DIRECTION.RIGHT,true);
         Road road1 = new Road(new ArrayList(Arrays.asList(left1)), new ArrayList(Arrays.asList(right1)));
 
-        Lane left2 = new Lane(15, Lane.DIRECTION.LEFT);
-        Lane right2 = new Lane(15, Lane.DIRECTION.RIGHT);
-        Road road2 = new Road(new ArrayList(Arrays.asList(left1)), new ArrayList(Arrays.asList(right1)));
+        Lane left2 = new Lane(15, Lane.DIRECTION.LEFT,true);
+        Lane right2 = new Lane(15, Lane.DIRECTION.RIGHT,true);
+        Road road2 = new Road(new ArrayList(Arrays.asList(left2)), new ArrayList(Arrays.asList(right2)));
 
-        JunctionLane jLane1 = new JunctionLane(15, Lane.DIRECTION.LEFT, src.Model.Junction.JunctionLane.TURN.NO);
-        JunctionLane jLane2 = new JunctionLane(15, Lane.DIRECTION.RIGHT, src.Model.Junction.JunctionLane.TURN.NO);
+        JunctionLane jLane1 = new JunctionLane(15, Lane.DIRECTION.LEFT,left2, src.Model.Junction.JunctionLane.TURN.NO);
+        JunctionLane jLane2 = new JunctionLane(15, Lane.DIRECTION.RIGHT,right1, src.Model.Junction.JunctionLane.TURN.NO);
 
-        JunctionOneSideOfRoad leftSideofRoad = new JunctionOneSideOfRoad(0,(ArrayList)Arrays.asList(jLane1), (ArrayList)Collections.emptyList(),(ArrayList)Collections.emptyList(),(ArrayList)Arrays.asList(left2));
-        JunctionOneSideOfRoad rightSideofRoad = new JunctionOneSideOfRoad(1,(ArrayList)Arrays.asList(jLane2), (ArrayList)Collections.emptyList(),(ArrayList)Collections.emptyList(),(ArrayList)Arrays.asList(right2));
+        ArrayList tmpLanes= new ArrayList();
+        tmpLanes.add(jLane1);
+
+        JunctionOneSideOfRoad leftSideofRoad = new JunctionOneSideOfRoad.Builder(1)
+                .lanes(new ArrayList(Arrays.asList(jLane1)))
+                .straightLanes(new ArrayList(Arrays.asList(left1)))
+                .build();
+
+        JunctionOneSideOfRoad rightSideofRoad = new JunctionOneSideOfRoad.Builder(2)
+                .lanes(new ArrayList(Arrays.asList(jLane2)))
+                .straightLanes(new ArrayList(Arrays.asList(right2)))
+                .build();
 
         Junction junction1 = new Junction(leftSideofRoad,rightSideofRoad);
 
@@ -38,25 +48,26 @@ public class JunctionTest {
         Random r = new Random();
         while(true){
             Vehicle tmp;
-            int vehSpeed= r.nextInt(3)+2;
-            if(true) {
+            if(i==0) {
                 //System.out.print(id);
                 int random = (int) (Math.random() * 4);
-                tmp = new Vehicle(++id, 0, random + 1, vehSpeed);
+                tmp = new Vehicle(++id, random + 1, 2);
                 //System.out.print(random);
-                int rand = (int)(Math.random()*10);
 
-                if(rand<6)
-                    road1.getLeftLanes().get(0).add(tmp);
-                else if(rand<11)
-                    road1.getRightLanes().get(0).add(tmp);
+                road1.getLeftLanes().get(0).addVehice(tmp);
+
             }
+
 
 
             View zajebistywidok = new View(road1);
             zajebistywidok.view();
 
             road1.update();
+            jLane1.update();
+            jLane2.update();
+            System.out.println(jLane1.toString());
+            System.out.println(jLane2.toString());
             i++;
         }
     }
