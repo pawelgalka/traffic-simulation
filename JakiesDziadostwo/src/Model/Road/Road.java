@@ -116,10 +116,12 @@ public class Road {
         }
 
         private boolean changeLeft(int index) {
-            if (id == 0 ) return false; //cannot go more left
+
 //            System.out.println(index + " " +positionOnRoad[index].getId());
 
             if (this.dir == DIRECTION.LEFT){
+                if (id == 0) return false;
+
                 Lane lane = Road.this.getLeftLanes().get(id-1); //get next left line
                 for (int i=index; i> index - Collections.max(Vehicle.getVectorOfMaxes()) && i >= 0; i--){
                     if (lane.positionOnRoad[i] != null){
@@ -133,6 +135,8 @@ public class Road {
                 }
             }
             else{
+                if (id == 0) return false;
+
                 Lane lane = Road.this.getRightLanes().get(id-1); //get next left line
                 for (int i = index; i<index+Collections.max(Vehicle.getVectorOfMaxes()) && i<maxLength; i++){
                     if (lane.positionOnRoad[i] != null){
@@ -149,10 +153,11 @@ public class Road {
         }
 
         private boolean changeRight(int index) {
-            if (id >= numberoflanes-1) return false; // cannot go more right
+             // cannot go more right
 //            System.out.println(index+ " " +positionOnRoad[index].getId());
 
             if (dir == DIRECTION.LEFT){
+                if (id >= Road.this.getLeftLanes().size()-1) return false;
                 Lane lane = Road.this.getLeftLanes().get(id+1); //get next left line
                 for (int i=index; i> index - Collections.max(Vehicle.getVectorOfMaxes()) && i >= 0; i--){
                     if (lane.positionOnRoad[i] != null){
@@ -166,6 +171,8 @@ public class Road {
                 }
             }
             else {
+                if (id >= Road.this.getRightLanes().size()-1) return false;
+
                 Lane lane = Road.this.getRightLanes().get(id+1); //get next left line
                 for (int i = index; i<index+Collections.max(Vehicle.getVectorOfMaxes()) && i<maxLength; i++){
                     if (lane.positionOnRoad[i] != null){
