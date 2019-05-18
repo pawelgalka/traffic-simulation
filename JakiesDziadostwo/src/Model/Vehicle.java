@@ -1,14 +1,28 @@
 package src.Model;
 
-public class Vehicle {
+import java.util.HashSet;
+
+public class Vehicle implements Cloneable {
     final private int id;
     //private int positionX;
     private int velocity;
     private int maxVelocity;
     final private double slowProbability;
 
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+    static HashSet<Integer> vectorOfMaxes = new HashSet<>();
+    public int getMaxVelocity() {
+        return maxVelocity;
+    }
 
 
+    public static HashSet<Integer> getVectorOfMaxes() {
+        return vectorOfMaxes;
+    }
     private enum TURN{
         LEFT,FORWARD,RIGHT,AROUND;
     }
@@ -19,6 +33,7 @@ public class Vehicle {
         velocity = velocity_;
         maxVelocity = maxVelocity_;
         slowProbability = 0.05;
+        vectorOfMaxes.add(maxVelocity_);
     }
 
     public Vehicle(int id_, int velocity_, int maxVelocity_,int slowProbability_) {
@@ -26,6 +41,7 @@ public class Vehicle {
         velocity = velocity_;
         maxVelocity = maxVelocity_;
         slowProbability = slowProbability_;
+        vectorOfMaxes.add(maxVelocity_);
     }
 
 
