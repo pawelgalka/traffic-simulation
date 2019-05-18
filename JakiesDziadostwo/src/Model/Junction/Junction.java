@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Junction {
-    private Road[] arrayOfRoads = new Road[4];
     ArrayList<JunctionOneSideOfRoad> arrayOfJunctionRoads = new ArrayList<>();
 
     public Junction(JunctionOneSideOfRoad... roads){
@@ -17,6 +16,11 @@ public class Junction {
 
     private enum Lights{
         RED, GREEN, LEFT;
+    }
+
+    public void update(){
+        arrayOfJunctionRoads.forEach(x->x.update());
+
     }
 
 

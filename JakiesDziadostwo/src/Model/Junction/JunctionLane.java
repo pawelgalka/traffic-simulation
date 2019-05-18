@@ -7,50 +7,32 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class JunctionLane extends Lane {
+public class JunctionLane extends Lane  {
 
+    private Lane previousLane;
     ArrayList<TURN> directionPossibilities = new ArrayList();
     public enum TURN {
         LEFT,RIGHT,NO;
     }
 
-    public JunctionLane(int maxLength_, DIRECTION x, TURN... dirPossibilities) {
-        super(maxLength_, x);
+    public JunctionLane(int maxLength_, DIRECTION x, Lane previousLane, TURN... dirPossibilities) {
+        super(maxLength_, x, true);
         directionPossibilities.addAll(Arrays.asList(dirPossibilities));
+        this.previousLane=previousLane;
     }
 
-    public boolean availableSpace(){
-        if(getListOfVehicles().size()==getMaxLength())
-            return false;
-        return true;
+    public void update(){
+        super.update();
+        previousLane.getAndClearVehiclesOutOfLane().forEach((k,v)->addVehice((Vehicle)k,(int)v));
     }
 
-    public void setAndUpdatePositionOfVehicles(Lane laneToJunction){
-        listOfVehicles = laneToJunction.getVehiclesToJunction();
-        for (Vehicle x:listOfVehicles) {
-            x.setPositionX(x.getPositionX()-laneToJunction.getMaxLength());
-            x.setVelocity(2);
+    @Override
+    public String toString() {
+        String tmp = new String();
+        for (int i=0;i<maxLength;i++){
+            if (getPositionOnRoad()[i]!=null)
+                tmp=tmp+i;
         }
+        return tmp;
     }
-
-    public boolean update(){
-        ArrayList remove = new ArrayList();
-        for (int i=0;i<listOfVehicles.size();i++){
-            move(i);
-
-            if(listOfVehicles.get(i).getPositionX()>=maxLength)
-                remove.add(listOfVehicles.get(i));
-        }
-
-        vehiclesOutOfLane= (ArrayList) remove.clone();
-        listOfVehicles.removeAll(remove);
-
-
-        return true;
-    }
-
-
-
-
-
 }

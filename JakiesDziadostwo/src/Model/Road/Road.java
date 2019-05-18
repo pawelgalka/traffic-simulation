@@ -26,12 +26,10 @@ public class Road {
 
     public boolean update(){
         for (Lane x:leftLanes) {
-            if (!x.update())
-                return false;
+            x.update();
         }
         for (Lane x:rightLanes) {
-            if (!x.update())
-                return false;
+            x.update();
         }
 
         return true;

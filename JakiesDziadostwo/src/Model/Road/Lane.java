@@ -2,72 +2,115 @@ package src.Model.Road;
 
 import src.Model.Vehicle;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class Lane {
-    protected ArrayList <Vehicle> listOfVehicles = new ArrayList<>();
-    protected ArrayList vehiclesOutOfLane = new ArrayList();
+    protected HashMap  vehiclesOutOfLane = new HashMap ();
     protected int maxLength;
+    private Vehicle positionOnRoad[];
+    boolean canLeave;
 
     DIRECTION dir;
-
-    public Lane(int maxLength_,DIRECTION x){
-        maxLength=maxLength_;
-        dir = x;
-    }
 
     public enum DIRECTION {
         LEFT,RIGHT
     }
 
-    public Lane add(Vehicle x){
-        listOfVehicles.add(x);
-        return this;
+    public Lane(int maxLength_,DIRECTION x,boolean canLeave_){
+        maxLength=maxLength_;
+        positionOnRoad=new Vehicle[maxLength];
+        dir = x;
+        canLeave=canLeave_;
     }
 
-    private void accelerate(int index){
-        listOfVehicles.get(index).accelerate();
+    public HashMap getAndClearVehiclesOutOfLane() {
+        HashMap tmp = vehiclesOutOfLane;
+        tmp.forEach((x,y) -> System.out.println(x));
+        vehiclesOutOfLane.clear();
+        return tmp;
     }
 
-    private void decelerate(int index) {
-        if (index == 0) return;
-        else {
-            Vehicle currentVehicle = listOfVehicles.get(index);
-            Vehicle previousVehicle = listOfVehicles.get(index-1);
-
-            if (currentVehicle.getVelocity() >= Math.abs(currentVehicle.getPositionX() - previousVehicle.getPositionX()) ) {
-                System.out.println(currentVehicle.getPositionX()+ " " + currentVehicle.getVelocity() +" "+ previousVehicle.getPositionX() + " " + previousVehicle.getVelocity());
-                currentVehicle.setPositionX(listOfVehicles.get(index).getPositionX());
-                currentVehicle.setVelocity(0);
+    public void update(){
+        vehiclesOutOfLane = new HashMap ();
+        for (int i=positionOnRoad.length-1 ; i>=0 ; i--) {
+            if (positionOnRoad[i] != null) {
+                accelerate(i);
+                randomslow(i);
+                decelerate(i);
+                int nextPos=moveOrReturnPosition(i);
+                if (nextPos!=-1){
+                    //System.out.println(nextPos);
+                    vehiclesOutOfLane.putIfAbsent(positionOnRoad[i],positionOnRoad[i].getVelocity()+i-maxLength);
+                    positionOnRoad[i]=null;
+                }
             }
         }
     }
+
+    private void accelerate(int index){
+        positionOnRoad[index].accelerate();
+    }
+
+    private void decelerate(int index) {
+        int nextCar=0;
+        for (int i=index+1;i != maxLength && i<maxLength;i++){
+            if (positionOnRoad[i]!=null){
+                nextCar=i;
+                break;
+            }
+        }
+        Vehicle currVehicle = positionOnRoad[index];
+        if (nextCar !=0 && currVehicle.getVelocity() >= Math.abs(index - nextCar) ) {
+            currVehicle.setVelocity(0);
+        }
+        else if(nextCar == 0){
+            if (index+currVehicle.getVelocity()>=maxLength && !canLeave){
+                currVehicle.setVelocity(maxLength-1-index);
+            }
+        }
+
+    }
+
     private void randomslow(int index){
-        if (listOfVehicles.get(index).getSlowProbability()>Math.random()){
-            listOfVehicles.get(index).setVelocity(listOfVehicles.get(index).getVelocity()-1);
+        if (positionOnRoad[index].getSlowProbability()>Math.random()){
+            positionOnRoad[index].setVelocity(positionOnRoad[index].getVelocity()-1);
         }
     }
 
-    protected void move(int index){
-        listOfVehicles.get(index).setPositionX(listOfVehicles.get(index).getPositionX()+listOfVehicles.get(index).getVelocity());
-    }
-    public boolean update(){
-        ArrayList remove = new ArrayList();
-        for (int i=0;i<listOfVehicles.size();i++){
-            accelerate(i);
-            decelerate(i);
-            randomslow(i);
-            move(i);
-
-            if(listOfVehicles.get(i).getPositionX()>=maxLength)
-                remove.add(listOfVehicles.get(i));
+    protected int moveOrReturnPosition(int index){
+        Vehicle tmp= positionOnRoad[index];
+        if(tmp==null)
+            System.out.println(index);
+        if (index+tmp.getVelocity() < maxLength){
+            positionOnRoad[index]=null;
+            positionOnRoad[index+tmp.getVelocity()]=tmp;
         }
+        else
+            return index;
+        return -1;
+    }
 
-        vehiclesOutOfLane= (ArrayList) remove.clone();
-        listOfVehicles.removeAll(remove);
+    public boolean addVehice(Vehicle x){
+        if (positionOnRoad[0]==null){
+            positionOnRoad[0]=x;
+            return true;
+        }
+        return false;
+    }
 
+    public boolean addVehice(Vehicle x,int pos){
+        if (positionOnRoad[pos]==null){
+            positionOnRoad[pos]=x;
+            return true;
+        }
+        return false;
+    }
 
+    //TODO
+    public boolean isAvaliableSpace(){
         return true;
     }
 
@@ -79,19 +122,15 @@ public class Lane {
         return maxLength;
     }
 
-    public ArrayList<Vehicle> getListOfVehicles() {
-        return listOfVehicles;
-    }
-
     public void redLight(){
-        Vehicle tmp = listOfVehicles.get(0);
-        if (tmp.getPositionX()+tmp.getVelocity()>=49) {
-            listOfVehicles.get(0).setPositionX(49);
-            listOfVehicles.get(0).setVelocity(0);
-        }
+        canLeave = false;
     }
 
-    public ArrayList getVehiclesToJunction() {
+    public Vehicle[] getPositionOnRoad() {
+        return positionOnRoad;
+    }
+
+    public HashMap getVehiclesToJunction() {
         return vehiclesOutOfLane;
     }
 }
