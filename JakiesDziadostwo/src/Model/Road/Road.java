@@ -98,7 +98,7 @@ public class Road {
             }
             Vehicle currVehicle = positionOnRoad[index];
 
-            System.out.println(currVehicle.getVelocity() +" "+ Math.abs(index - nextCar));
+//            System.out.println(currVehicle.getVelocity() +" "+ Math.abs(index - nextCar));
 
             if (nextCar !=0 && currVehicle.getVelocity() >= Math.abs(index - nextCar) ){
 //                System.out.println(currVehicle.getVelocity() +" "+ Math.abs(index - nextCar));
@@ -118,6 +118,7 @@ public class Road {
             for (int i = index; i<=positionOnRoad[index].getVelocity()+1; i++){
                 if (leftLane.getPositionOnRoad()[i] != null) return false;
             }
+            System.out.println("LEWY");
             return true;
         }
 
@@ -131,6 +132,7 @@ public class Road {
             for (int i = index; i<=positionOnRoad[index].getVelocity()+1; i++){
                 if (leftLane.getPositionOnRoad()[i] != null) return false;
             }
+            System.out.println("PRAWY");
             return true;
         }
         public void update() throws Exception{
@@ -145,8 +147,8 @@ public class Road {
 
                         if (l){
                             if(i+positionOnRoad[i].getVelocity()<maxLength){
-                            Road.this.leftLanes.get(id-1).getPositionOnRoad()[i+positionOnRoad[i].getVelocity()] = (Vehicle)positionOnRoad[i].clone();
-                            positionOnRoad[i+positionOnRoad[i].getVelocity()]=null;}
+                            Road.this.leftLanes.get(id-1).getPositionOnRoad()[i+positionOnRoad[i].getVelocity()] = positionOnRoad[i];//Vehicle)positionOnRoad[i].clone();
+                            positionOnRoad[i]=null;}
 
                            else {
                                Road.this.leftLanes.get(id-1).vehiclesOutOfLane.putIfAbsent(positionOnRoad[i],positionOnRoad[i].getVelocity()+i-maxLength);
@@ -156,16 +158,26 @@ public class Road {
                            break;
                         }
 
-                        /*else if (r){
-                            int in =  Road.this.leftLanes.get(id+1).moveOrReturnPosition(i);
+                        else if (r){
+                            /*int in =  Road.this.leftLanes.get(id+1).moveOrReturnPosition(i);
                             positionOnRoad[i+positionOnRoad[i].getVelocity()]=null;
                             if (in != -1){
                                 Road.this.leftLanes.get(id+1).vehiclesOutOfLane.putIfAbsent(positionOnRoad[i],positionOnRoad[i].getVelocity()+i-maxLength);
                                 Road.this.leftLanes.get(id+1).getPositionOnRoad()[i] = null;
 
                             }
+                            break;*/
+                            if(i+positionOnRoad[i].getVelocity()<maxLength){
+                                Road.this.leftLanes.get(id+1).getPositionOnRoad()[i+positionOnRoad[i].getVelocity()] = positionOnRoad[i];//Vehicle)positionOnRoad[i].clone();
+                                positionOnRoad[i]=null;}
+
+                            else {
+                                Road.this.leftLanes.get(id+1).vehiclesOutOfLane.putIfAbsent(positionOnRoad[i],positionOnRoad[i].getVelocity()+i-maxLength);
+                                Road.this.leftLanes.get(id+1).getPositionOnRoad()[i] = null;
+
+                            }
                             break;
-                        }9*/
+                        }
 
                     }
 

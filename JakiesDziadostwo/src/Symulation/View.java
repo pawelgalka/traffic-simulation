@@ -56,7 +56,7 @@ public class View {
 
             showLaneSeparator('=',x.getRightLanes().get(0).getMaxLength());
             newLine(5);
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(3/2);
         }
 
         public void showLaneSeparator(char separator,int length){
