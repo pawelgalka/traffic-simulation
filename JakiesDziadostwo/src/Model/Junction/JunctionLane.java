@@ -1,14 +1,14 @@
 package src.Model.Junction;
 
-import src.Model.Road.Lane;
 import src.Model.Vehicle;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class JunctionLane extends Lane  {
+public class JunctionLane   {
 
+    /*
     private Lane previousLane;
     ArrayList<TURN> directionPossibilities = new ArrayList();
     public enum TURN {
@@ -35,4 +35,5 @@ public class JunctionLane extends Lane  {
         }
         return tmp;
     }
+    */
 }

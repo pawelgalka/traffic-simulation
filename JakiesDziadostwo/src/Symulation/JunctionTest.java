@@ -3,7 +3,6 @@ package src.Symulation;
 import src.Model.Junction.Junction;
 import src.Model.Junction.JunctionLane;
 import src.Model.Junction.JunctionOneSideOfRoad;
-import src.Model.Road.Lane;
 import src.Model.Road.Road;
 import src.Model.Vehicle;
 
@@ -15,7 +14,7 @@ import java.util.Random;
 
 public class JunctionTest {
     public static void main(String[] args) throws Throwable{
-
+        /*
         int i=0;
 
         Lane left1 = new Lane(15, Lane.DIRECTION.LEFT,true);
@@ -72,5 +71,6 @@ public class JunctionTest {
             System.out.println(jLane2.toString());
             i++;
         }
+        */
     }
 }

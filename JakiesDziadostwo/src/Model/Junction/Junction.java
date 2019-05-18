@@ -14,12 +14,9 @@ public class Junction {
         arrayOfJunctionRoads.addAll(Arrays.asList(roads));
     }
 
-    private enum Lights{
-        RED, GREEN, LEFT;
-    }
 
     public void update(){
-        arrayOfJunctionRoads.forEach(x->x.update());
+        //arrayOfJunctionRoads.forEach(x->x.update());
 
     }
 

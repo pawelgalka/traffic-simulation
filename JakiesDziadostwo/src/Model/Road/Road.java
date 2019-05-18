@@ -49,7 +49,7 @@ public class Road {
         return true;
     }
 
-    src.Model.Road.Lane.DIRECTION dir;
+    Road.DIRECTION dir;
 
     public enum DIRECTION {
         LEFT,RIGHT
@@ -61,6 +61,14 @@ public class Road {
     public ArrayList<Road.Lane> getRightLanes() {
         return rightLanes;
     }
+
+
+
+
+
+
+
+
     public class Lane {
         int id;
         protected HashMap vehiclesOutOfLane = new HashMap ();
@@ -73,7 +81,7 @@ public class Road {
             return id;
         }
 
-        public Lane(int maxLength_, src.Model.Road.Lane.DIRECTION x, boolean canLeave_, int id_){
+        public Lane(int maxLength_, Road.DIRECTION x, boolean canLeave_, int id_){
             maxLength=maxLength_;
             id = id_;
             positionOnRoad=new Vehicle[maxLength];
@@ -82,8 +90,8 @@ public class Road {
         }
 
         public HashMap getAndClearVehiclesOutOfLane() {
-            HashMap tmp = vehiclesOutOfLane;
-            tmp.forEach((x,y) -> System.out.println(x));
+            HashMap tmp = (HashMap) vehiclesOutOfLane.clone();
+
             vehiclesOutOfLane.clear();
             return tmp;
         }
@@ -246,6 +254,7 @@ public class Road {
         }
 
         public boolean addVehice(Vehicle x,int pos){
+            System.out.println("wow");
             if (positionOnRoad[pos]==null){
                 positionOnRoad[pos]=x;
                 return true;
@@ -258,7 +267,7 @@ public class Road {
             return true;
         }
 
-        public src.Model.Road.Lane.DIRECTION getDir() {
+        public Road.DIRECTION getDir() {
             return dir;
         }
 

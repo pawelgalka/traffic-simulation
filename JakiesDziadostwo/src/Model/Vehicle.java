@@ -9,6 +9,12 @@ public class Vehicle implements Cloneable {
     private int maxVelocity;
     final private double slowProbability;
 
+    private Destination destination = new Destination(0,1);
+
+    public Destination getDestination() {
+        return destination;
+    }
+
     @Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
@@ -28,20 +34,22 @@ public class Vehicle implements Cloneable {
     }
 
 
-    public Vehicle(int id_, int velocity_, int maxVelocity_) {
+    public Vehicle(int id_, int velocity_, int maxVelocity_, Destination destination) {
         id = id_;
         velocity = velocity_;
         maxVelocity = maxVelocity_;
         slowProbability = 0.05;
         vectorOfMaxes.add(maxVelocity_);
+        this.destination=destination;
     }
 
-    public Vehicle(int id_, int velocity_, int maxVelocity_,int slowProbability_) {
+    public Vehicle(int id_, int velocity_, int maxVelocity_,int slowProbability_, Destination destination) {
         id = id_;
         velocity = velocity_;
         maxVelocity = maxVelocity_;
         slowProbability = slowProbability_;
         vectorOfMaxes.add(maxVelocity_);
+        this.destination=destination;
     }
 
 

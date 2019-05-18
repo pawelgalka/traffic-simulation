@@ -1,6 +1,5 @@
 package src.Model.Junction;
 
-import src.Model.Road.Lane;
 import src.Model.Road.Road;
 import src.Model.Vehicle;
 
@@ -8,6 +7,7 @@ import java.util.ArrayList;
 
 public class JunctionOneSideOfRoad{
 
+    /*
     private int id;
     ArrayList<JunctionLane> junctionLanes = new ArrayList<>();
     ArrayList<Lane> laneAfterLeftTurn = new ArrayList<>();
@@ -64,4 +64,5 @@ public class JunctionOneSideOfRoad{
             return new JunctionOneSideOfRoad(this);
         }
     }
+    */
 }

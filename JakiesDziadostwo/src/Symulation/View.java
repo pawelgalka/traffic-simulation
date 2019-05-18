@@ -1,7 +1,6 @@
 package src.Symulation;
 
 
-import src.Model.Road.Lane;
 import src.Model.Road.Road;
 import src.Model.Vehicle;
 
@@ -10,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class View {
         private Road x;
 
+
         public View(Road x_){
             x=x_;
         }
@@ -17,7 +17,7 @@ public class View {
         public void view() throws Throwable{
             showLaneSeparator('=',x.getRightLanes().get(0).getMaxLength());
 
-            //System.out.println(x.getRightLanes().size());
+            //System.out.println(id);
             for (int i = 0; i < x.getRightLanes().size(); i++) {
 
 
