@@ -27,7 +27,8 @@ public class Main {
 
 //        Road road = new Road(new ArrayList(Arrays.asList(left1,left2)), new ArrayList(Arrays.asList(right1,right2)));
         road.setLeftLanes(new ArrayList(Arrays.asList(left1,left2)));
-        road.setRightLanes(new ArrayList(Arrays.asList(right1,right2)));
+        road.setRightLanes(new ArrayList(Arrays.asList(right2,right1)));
+        road.setNumberoflanes(Math.max(road.getRightLanes().size(),road.getLeftLanes().size()));
         int id=0;
         Random r = new Random();
         Destination destinationStraight = new Destination(0,0);
