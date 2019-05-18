@@ -13,15 +13,16 @@ public class Main {
 
         int i=0;
         Road road = new Road();
-        Road.Lane left1 = road.new Lane(50, Lane.DIRECTION.LEFT,true,0);
-        Road.Lane left2 = road.new Lane(50, Lane.DIRECTION.LEFT,true,1);
+        Road.Lane left1 = road.new Lane(50, Road.DIRECTION.LEFT,true,0);
+        Road.Lane left2 = road.new Lane(50, Road.DIRECTION.LEFT,true,1);
 
-        Road.Lane right1 = road.new Lane(50, Lane.DIRECTION.RIGHT,true,1);
-        Road.Lane right2 = road.new Lane(50, Lane.DIRECTION.RIGHT,true,0);
+        Road.Lane right1 = road.new Lane(50, Road.DIRECTION.RIGHT,true,1);
+        Road.Lane right2 = road.new Lane(50, Road.DIRECTION.RIGHT,true,0);
 
 //        Road road = new Road(new ArrayList(Arrays.asList(left1,left2)), new ArrayList(Arrays.asList(right1,right2)));
         road.setLeftLanes(new ArrayList(Arrays.asList(left1,left2)));
-        road.setRightLanes(new ArrayList(Arrays.asList(right1,right2)));
+        road.setRightLanes(new ArrayList(Arrays.asList(right2,right1)));
+        road.setNumberoflanes(Math.max(road.getRightLanes().size(),road.getLeftLanes().size()));
         int id=0;
         Random r = new Random();
 

@@ -2,6 +2,7 @@ package src.Model.Road;
 
 import src.Model.Vehicle;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -10,6 +11,11 @@ public class Road {
     private int id;
     protected ArrayList<Road.Lane> leftLanes = new ArrayList<>() ;
     protected ArrayList<Road.Lane> rightLanes = new ArrayList<>();
+    private int numberoflanes;
+
+    public void setNumberoflanes(int numberoflanes) {
+        this.numberoflanes = numberoflanes;
+    }
 
     public void setRightLanes(ArrayList<Lane> rightLanes) {
         this.rightLanes = rightLanes;
@@ -49,7 +55,7 @@ public class Road {
         return true;
     }
 
-    src.Model.Road.Lane.DIRECTION dir;
+
 
     public enum DIRECTION {
         LEFT,RIGHT
@@ -62,6 +68,8 @@ public class Road {
         return rightLanes;
     }
     public class Lane {
+
+        Road.DIRECTION dir;
         int id;
         protected HashMap vehiclesOutOfLane = new HashMap ();
         protected int maxLength;
@@ -73,7 +81,7 @@ public class Road {
             return id;
         }
 
-        public Lane(int maxLength_, src.Model.Road.Lane.DIRECTION x, boolean canLeave_, int id_){
+        public Lane(int maxLength_, Road.DIRECTION x, boolean canLeave_, int id_){
             maxLength=maxLength_;
             id = id_;
             positionOnRoad=new Vehicle[maxLength];
@@ -98,41 +106,78 @@ public class Road {
             }
             Vehicle currVehicle = positionOnRoad[index];
 
-//            System.out.println(currVehicle.getVelocity() +" "+ Math.abs(index - nextCar));
+//            System.out.println("Do zmiany "+currVehicle.getVelocity() +" "+ Math.abs(index - nextCar));
 
-            if (nextCar !=0 && currVehicle.getVelocity() >= Math.abs(index - nextCar) ){
+            if (nextCar !=0 && currVehicle.getVelocity() >= Math.abs(index - nextCar) -1){
 //                System.out.println(currVehicle.getVelocity() +" "+ Math.abs(index - nextCar));
                 return true;
             }
             else return false;
-
         }
 
         private boolean changeLeft(int index) {
-            if(id == 0) return false;
-            System.out.println(id+" "+Road.this.getLeftLanes().size());;
-            Lane leftLane = Road.this.leftLanes.get(id-1);
-            for (int i = index; i>index- Collections.max(Vehicle.getVectorOfMaxes()) && i>=0; i--){
-                if (leftLane.getPositionOnRoad()[i] != null) return false;
+            if (id == 0 ) return false; //cannot go more left
+//            System.out.println(index + " " +positionOnRoad[index].getId());
+
+            if (this.dir == DIRECTION.LEFT){
+                Lane lane = Road.this.getLeftLanes().get(id-1); //get next left line
+                for (int i=index; i> index - Collections.max(Vehicle.getVectorOfMaxes()) && i >= 0; i--){
+                    if (lane.positionOnRoad[i] != null){
+                        return false;
+                    }
+                }
+                for (int j=index; j<index+getPositionOnRoad()[index].getVelocity()+1; j++){
+                    if (lane.positionOnRoad[j] != null){
+                        return false;
+                    }
+                }
             }
-            for (int i = index; i<=positionOnRoad[index].getVelocity()+1; i++){
-                if (leftLane.getPositionOnRoad()[i] != null) return false;
+            else{
+                Lane lane = Road.this.getRightLanes().get(id-1); //get next left line
+                for (int i = index; i<index+Collections.max(Vehicle.getVectorOfMaxes()) && i<maxLength; i++){
+                    if (lane.positionOnRoad[i] != null){
+                        return false;
+                    }
+                }
+                for (int j = index; j>index-getPositionOnRoad()[index].getVelocity()-1 && j>=0; j--){
+                    if (lane.positionOnRoad[j] != null){
+                        return false;
+                    }
+                }
             }
-            System.out.println("LEWY");
             return true;
         }
 
         private boolean changeRight(int index) {
-            if(id == Road.this.getRightLanes().size()-1) return false;
-            Lane leftLane = Road.this.getRightLanes().get(id+1);
+            if (id >= numberoflanes-1) return false; // cannot go more right
+//            System.out.println(index+ " " +positionOnRoad[index].getId());
 
-            for (int i = index; i>index- (Integer)Collections.max(Vehicle.getVectorOfMaxes()) && i>=0; i--){
-                if (leftLane.getPositionOnRoad()[i] != null) return false;
+            if (dir == DIRECTION.LEFT){
+                Lane lane = Road.this.getLeftLanes().get(id+1); //get next left line
+                for (int i=index; i> index - Collections.max(Vehicle.getVectorOfMaxes()) && i >= 0; i--){
+                    if (lane.positionOnRoad[i] != null){
+                        return false;
+                    }
+                }
+                for (int j=index; j<index+getPositionOnRoad()[index].getVelocity()+1 && j<maxLength; j++){
+                    if (lane.positionOnRoad[j] != null){
+                        return false;
+                    }
+                }
             }
-            for (int i = index; i<=positionOnRoad[index].getVelocity()+1; i++){
-                if (leftLane.getPositionOnRoad()[i] != null) return false;
+            else {
+                Lane lane = Road.this.getRightLanes().get(id+1); //get next left line
+                for (int i = index; i<index+Collections.max(Vehicle.getVectorOfMaxes()) && i<maxLength; i++){
+                    if (lane.positionOnRoad[i] != null){
+                        return false;
+                    }
+                }
+                for (int j = index; j>index-getPositionOnRoad()[index].getVelocity()-1 && j>=0; j--){
+                    if (lane.positionOnRoad[j] != null) {
+                        return false;
+                    }
+                }
             }
-            System.out.println("PRAWY");
             return true;
         }
         public void update() throws Exception{
@@ -141,40 +186,66 @@ public class Road {
                 if (positionOnRoad[i] != null) {
                     boolean change = changeLane(i);
                     if(change){
-                        System.out.println("ZMIAANANANANANA"+ i+" "+id);
+//                        System.out.println("ZMIAANANANANANA "+ getPositionOnRoad()[i].getId()+" "+id);
                         boolean l = changeLeft(i);
                         boolean r = changeRight(i);
 
                         if (l){
-                            if(i+positionOnRoad[i].getVelocity()<maxLength){
-                            Road.this.leftLanes.get(id-1).getPositionOnRoad()[i+positionOnRoad[i].getVelocity()] = positionOnRoad[i];//Vehicle)positionOnRoad[i].clone();
-                            positionOnRoad[i]=null;}
+                                switch (dir){
+                                    case LEFT:{
+                                        if(i+positionOnRoad[i].getVelocity()<maxLength){
+                                            Road.this.leftLanes.get(id-1).getPositionOnRoad()[i+positionOnRoad[i].getVelocity()] = positionOnRoad[i];//Vehicle)positionOnRoad[i].clone();
+                                            positionOnRoad[i]=null;
+                                        }
+                                        else {
+                                            Road.this.leftLanes.get(id-1).vehiclesOutOfLane.putIfAbsent(positionOnRoad[i],positionOnRoad[i].getVelocity()+i-maxLength);
+                                            Road.this.leftLanes.get(id-1).getPositionOnRoad()[i] = null;
 
-                           else {
-                               Road.this.leftLanes.get(id-1).vehiclesOutOfLane.putIfAbsent(positionOnRoad[i],positionOnRoad[i].getVelocity()+i-maxLength);
-                               Road.this.leftLanes.get(id-1).getPositionOnRoad()[i] = null;
+                                        }
+                                        break;
+                                    }
+                                    case RIGHT:{
+                                        if(i+positionOnRoad[i].getVelocity()<maxLength) {
+                                            Road.this.rightLanes.get(id-1).getPositionOnRoad()[i + positionOnRoad[i].getVelocity()] = positionOnRoad[i];//Vehicle)positionOnRoad[i].clone();
+                                            positionOnRoad[i] = null;
+                                        }
+                                        else {
+                                            Road.this.rightLanes.get(id-1).vehiclesOutOfLane.putIfAbsent(positionOnRoad[i],positionOnRoad[i].getVelocity()+i-maxLength);
+                                            Road.this.rightLanes.get(id-1).getPositionOnRoad()[i] = null;
 
-                           }
-                           break;
-                        }
+                                        }
+                                        break;
+                                    }
+                                }
+                                break;
+                            }
 
                         else if (r){
-                            /*int in =  Road.this.leftLanes.get(id+1).moveOrReturnPosition(i);
-                            positionOnRoad[i+positionOnRoad[i].getVelocity()]=null;
-                            if (in != -1){
-                                Road.this.leftLanes.get(id+1).vehiclesOutOfLane.putIfAbsent(positionOnRoad[i],positionOnRoad[i].getVelocity()+i-maxLength);
-                                Road.this.leftLanes.get(id+1).getPositionOnRoad()[i] = null;
+                            switch (dir){
+                                case LEFT:{
+                                    if(i+positionOnRoad[i].getVelocity()<maxLength){
+                                        Road.this.leftLanes.get(id+1).getPositionOnRoad()[i+positionOnRoad[i].getVelocity()] = positionOnRoad[i];//Vehicle)positionOnRoad[i].clone();
+                                        positionOnRoad[i]=null;
+                                    }
+                                    else {
+                                        Road.this.leftLanes.get(id+1).vehiclesOutOfLane.putIfAbsent(positionOnRoad[i],positionOnRoad[i].getVelocity()+i-maxLength);
+                                        Road.this.leftLanes.get(id+1).getPositionOnRoad()[i] = null;
 
-                            }
-                            break;*/
-                            if(i+positionOnRoad[i].getVelocity()<maxLength){
-                                Road.this.leftLanes.get(id+1).getPositionOnRoad()[i+positionOnRoad[i].getVelocity()] = positionOnRoad[i];//Vehicle)positionOnRoad[i].clone();
-                                positionOnRoad[i]=null;}
+                                    }
+                                    break;
+                                }
+                                case RIGHT:{
+                                    if(i+positionOnRoad[i].getVelocity()<maxLength) {
+                                        Road.this.rightLanes.get(id+1).getPositionOnRoad()[i + positionOnRoad[i].getVelocity()] = positionOnRoad[i];//Vehicle)positionOnRoad[i].clone();
+                                        positionOnRoad[i] = null;
+                                    }
+                                    else {
+                                        Road.this.rightLanes.get(id+1).vehiclesOutOfLane.putIfAbsent(positionOnRoad[i],positionOnRoad[i].getVelocity()+i-maxLength);
+                                        Road.this.rightLanes.get(id+1).getPositionOnRoad()[i] = null;
 
-                            else {
-                                Road.this.leftLanes.get(id+1).vehiclesOutOfLane.putIfAbsent(positionOnRoad[i],positionOnRoad[i].getVelocity()+i-maxLength);
-                                Road.this.leftLanes.get(id+1).getPositionOnRoad()[i] = null;
-
+                                    }
+                                    break;
+                                }
                             }
                             break;
                         }
@@ -258,7 +329,7 @@ public class Road {
             return true;
         }
 
-        public src.Model.Road.Lane.DIRECTION getDir() {
+        public Road.DIRECTION getDir() {
             return dir;
         }
 
@@ -277,6 +348,7 @@ public class Road {
         public HashMap getVehiclesToJunction() {
             return vehiclesOutOfLane;
         }
+
     }
 
 

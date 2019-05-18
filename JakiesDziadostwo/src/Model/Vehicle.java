@@ -105,6 +105,6 @@ public class Vehicle implements Cloneable {
 
     @Override
     public String toString() {
-        return id + " " + velocity;
+        return id + " " +velocity;
     }
 }
