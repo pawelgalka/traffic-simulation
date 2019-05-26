@@ -5,7 +5,7 @@ import src.Model.Vehicle;
 
 import java.util.HashMap;
 
-public class Testtest {
+public class TurnOnJunction {
     private Road.Lane previousLane;
     private Road.Lane nextLane;
     private Road.Lane nextLeftLane;
@@ -16,19 +16,19 @@ public class Testtest {
         left,right;
     }
 
-    public Testtest(Road.Lane previousLane, Road.Lane nextLane) {
+    public TurnOnJunction(Road.Lane previousLane, Road.Lane nextLane) {
         this.previousLane = previousLane;
         this.nextLane = nextLane;
     }
 
-    public Testtest(Road.Lane previousLane, Road.Lane nextLane, Road.Lane nextLeftLane,Turn turn  ) {
+    public TurnOnJunction(Road.Lane previousLane, Road.Lane nextLane, Road.Lane nextLeftLane, Turn turn  ) {
         this.previousLane = previousLane;
         this.nextLane = nextLane;
         this.nextLeftLane= nextLeftLane;
         this.turn=turn;
     }
 
-    public Testtest(Road.Lane previousLane, Road.Lane nextLane, Road.Lane nextLeftLane, Road.Lane nextRightLane ) {
+    public TurnOnJunction(Road.Lane previousLane, Road.Lane nextLane, Road.Lane nextLeftLane, Road.Lane nextRightLane ) {
         this.previousLane = previousLane;
         this.nextLane = nextLane;
         this.nextLeftLane= nextLeftLane;

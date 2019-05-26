@@ -1,23 +1,21 @@
 package src.Model.Junction;
 
-import src.Model.Road.Road;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
 public class Junction {
-    ArrayList<JunctionOneSideOfRoad> arrayOfJunctionRoads = new ArrayList<>();
+    private TurnOnJunction4Roads turnOnJunction4Roads;
+    private JunctionStructure roads;
+    final int maxLightsTime;
+    private boolean greenLights = false;
 
-    public Junction(JunctionOneSideOfRoad... roads){
-        arrayOfJunctionRoads.addAll(Arrays.asList(roads));
+    //TODO <- stala liczba dróg!
+    public Junction(JunctionStructure roads, int maxLightsTime) {
+        this.roads = roads;
+        this.maxLightsTime = maxLightsTime;
+        turnOnJunction4Roads = new TurnOnJunction4Roads(roads);
+
     }
 
-
-    public void update(){
-        //arrayOfJunctionRoads.forEach(x->x.update());
-
+    public void update(int time){
+        roads.update(time,10);
     }
 
 

@@ -2,17 +2,12 @@ package src.Symulation;
 
 
 import src.Model.Destination;
-import src.Model.Junction.Junction;
-import src.Model.Junction.JunctionLane;
-import src.Model.Junction.JunctionOneSideOfRoad;
-import src.Model.Junction.Testtest;
+import src.Model.Junction.TurnOnJunction;
 import src.Model.Road.Road;
 import src.Model.Vehicle;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Random;
 
 public class Test {
@@ -46,7 +41,7 @@ public class Test {
         road3.setLeftLanes(new ArrayList(Arrays.asList(left21)));
         road3.setRightLanes(new ArrayList(Arrays.asList(right21)));
 
-        Testtest xd= new Testtest (left1,left21,left31, Testtest.Turn.right);
+        TurnOnJunction xd= new TurnOnJunction (left1,left21,left31, TurnOnJunction.Turn.right);
 
 
 
@@ -85,7 +80,7 @@ public class Test {
             road.update();
 
             xd.toNextLane();
-            View zajebistywidok2 = new View(road2);
+            View zajebistywidok2 = new View(road3);
             zajebistywidok2.view();
             road2.update();
 

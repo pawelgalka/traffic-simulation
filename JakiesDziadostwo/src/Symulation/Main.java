@@ -1,17 +1,11 @@
 package src.Symulation;
 
 import src.Model.Destination;
-import src.Model.Junction.Junction;
-import src.Model.Junction.JunctionLane;
-import src.Model.Junction.JunctionOneSideOfRoad;
-import src.Model.Junction.Testtest;
 import src.Model.Road.Road;
 import src.Model.Vehicle;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Random;
 
 public class Main {
