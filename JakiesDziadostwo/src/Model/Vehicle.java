@@ -3,11 +3,15 @@ package src.Model;
 import java.util.HashSet;
 
 public class Vehicle implements Cloneable {
+    public enum TYPE{
+        CAR,BUS
+    }
     final private int id;
     //private int positionX;
     private int velocity;
     private int maxVelocity;
     final private double slowProbability;
+    final private TYPE type;
 
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -28,18 +32,29 @@ public class Vehicle implements Cloneable {
     }
 
 
-    public Vehicle(int id_, int velocity_, int maxVelocity_) {
+    public Vehicle(int id_, int velocity_, int maxVelocity_, TYPE type_) {
         id = id_;
         velocity = velocity_;
-        maxVelocity = maxVelocity_;
+        type = type_;
+        switch (type){
+            case BUS: maxVelocity = (int)Math.floor(maxVelocity_/2);
+            case CAR: maxVelocity = maxVelocity_;
+        }
+//        maxVelocity = maxVelocity_;
         slowProbability = 0.05;
         vectorOfMaxes.add(maxVelocity_);
+
     }
 
-    public Vehicle(int id_, int velocity_, int maxVelocity_,int slowProbability_) {
+    public Vehicle(int id_, int velocity_, int maxVelocity_,int slowProbability_, TYPE type_) {
         id = id_;
         velocity = velocity_;
-        maxVelocity = maxVelocity_;
+        type = type_;
+        switch (type){
+            case BUS: maxVelocity = (int)Math.floor(maxVelocity_/2);
+            case CAR: maxVelocity = maxVelocity_;
+        }
+//        maxVelocity = maxVelocity_;
         slowProbability = slowProbability_;
         vectorOfMaxes.add(maxVelocity_);
     }
@@ -106,5 +121,17 @@ public class Vehicle implements Cloneable {
     @Override
     public String toString() {
         return id + " " +velocity;
+    }
+
+    public TYPE getType() {
+        return type;
+    }
+
+    public boolean canOverTake(){
+        switch (type){
+            case CAR: return true;
+            case BUS: return false;
+            default: return true;
+        }
     }
 }

@@ -19,13 +19,22 @@ public class View {
 
             //System.out.println(x.getRightLanes().size());
             for (int i = 0; i < x.getRightLanes().size(); i++) {
-
+//                System.out.println(x.getRightLanes().get(i).getId());
 
                 Road.Lane tmp = x.getRightLanes().get(i);
-//                System.out.println(tmp.getId());
+                System.out.println(tmp.getId());
                 for (int j = x.getRightLanes().get(0).getMaxLength() - 1; j >= 0; j--) {
                     if (tmp.getPositionOnRoad()[j] != null) {
-                        System.out.print("<");
+                        switch (tmp.getPositionOnRoad()[j].getType()){
+                            case BUS:{
+                                System.out.print("B");
+                                break;
+                            }
+                            case CAR:{
+                                System.out.print("<");
+                                break;
+                            }
+                        }
                     } else
                         System.out.print(" ");
                 }
@@ -38,11 +47,20 @@ public class View {
             showLaneSeparator('=',x.getRightLanes().get(0).getMaxLength());
             for (int i = 0; i < x.getLeftLanes().size(); i++) {
                 Road.Lane tmp = x.getLeftLanes().get(i);
-//                System.out.println(tmp.getId());
+                System.out.println(tmp.getId());
 
                 for (int j = 0; j <tmp.getMaxLength(); j++) {
                     if (tmp.getPositionOnRoad()[j] != null) {
-                        System.out.print(">");
+                        switch (tmp.getPositionOnRoad()[j].getType()) {
+                            case BUS: {
+                                System.out.print("B");
+                                break;
+                            }
+                            case CAR: {
+                                System.out.print(">");
+                                break;
+                            }
+                        }
                     } else
                         System.out.print(" ");
                 }

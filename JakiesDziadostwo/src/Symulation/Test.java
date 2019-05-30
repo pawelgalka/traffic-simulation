@@ -28,14 +28,14 @@ public class Test {
             if(i==0) {
                 //System.out.print(id);
 
-                tmp = new Vehicle(++id,2,5);
+                /*tmp = new Vehicle(++id,2,5);
                 road.getLeftLanes().get(0).addVehice(tmp);
 
                 tmp = new Vehicle(++id,3,5);
                 road.getLeftLanes().get(0).addVehice(tmp);
 
                 tmp = new Vehicle(++id,5,5);
-                road.getLeftLanes().get(0).addVehice(tmp);
+                road.getLeftLanes().get(0).addVehice(tmp);*/
             }
 
             /*

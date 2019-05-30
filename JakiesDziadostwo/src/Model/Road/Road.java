@@ -105,7 +105,7 @@ public class Road {
                 }
             }
             Vehicle currVehicle = positionOnRoad[index];
-
+            if (!currVehicle.canOverTake()) return false; // BUS or CAR
 //            System.out.println("Do zmiany "+currVehicle.getVelocity() +" "+ Math.abs(index - nextCar));
 
             if (nextCar !=0 && currVehicle.getVelocity() >= Math.abs(index - nextCar) -1){

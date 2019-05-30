@@ -51,10 +51,10 @@ public class JunctionTest {
             if(i==0) {
                 //System.out.print(id);
                 int random = (int) (Math.random() * 4);
-                tmp = new Vehicle(++id, random + 1, 2);
+//                tmp = new Vehicle(++id, random + 1, 2);
                 //System.out.print(random);
 
-                road1.getLeftLanes().get(0).addVehice(tmp);
+//                road1.getLeftLanes().get(0).addVehice(tmp);
             }
 
 
