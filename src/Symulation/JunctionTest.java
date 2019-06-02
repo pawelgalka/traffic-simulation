@@ -1,8 +1,8 @@
 package Symulation;
 
-import Model.Junction.Junction;
-import Model.Junction.JunctionLane;
-import Model.Junction.JunctionOneSideOfRoad;
+import Model.JunctionNOTUSED.Junction;
+import Model.JunctionNOTUSED.JunctionLane;
+import Model.JunctionNOTUSED.JunctionOneSideOfRoad;
 import Model.Road.Lane;
 import Model.Road.Road;
 import Model.Vehicle;
@@ -24,8 +24,8 @@ public class JunctionTest {
         Lane right2 = new Lane(15, Lane.DIRECTION.RIGHT,true);
         Road road2 = new Road(new ArrayList(Arrays.asList(left2)), new ArrayList(Arrays.asList(right2)));
 
-        JunctionLane jLane1 = new JunctionLane(15, Lane.DIRECTION.LEFT,left2, Model.Junction.JunctionLane.TURN.NO);
-        JunctionLane jLane2 = new JunctionLane(15, Lane.DIRECTION.RIGHT,right1, Model.Junction.JunctionLane.TURN.NO);
+        JunctionLane jLane1 = new JunctionLane(15, Lane.DIRECTION.LEFT,left2, Model.JunctionNOTUSED.JunctionLane.TURN.NO);
+        JunctionLane jLane2 = new JunctionLane(15, Lane.DIRECTION.RIGHT,right1, Model.JunctionNOTUSED.JunctionLane.TURN.NO);
 
         ArrayList tmpLanes= new ArrayList();
         tmpLanes.add(jLane1);

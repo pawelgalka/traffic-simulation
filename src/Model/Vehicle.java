@@ -16,6 +16,12 @@ public class Vehicle extends Circle implements Cloneable {
     final private double slowProbability;
     final private TYPE type;
 
+    private Destination destination = new Destination(0,0);
+
+    public Destination getDestination() {
+        return destination;
+    }
+
     @Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
