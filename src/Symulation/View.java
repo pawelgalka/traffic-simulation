@@ -20,7 +20,7 @@ public class View {
 //                System.out.println(x.getRightLanes().get(i).getid());
 
                 Road.Lane tmp = x.getRightLanes().get(i);
-//                System.out.println(tmp.getid());
+//                System.out.println(tmp.getId());
                 for (int j = x.getRightLanes().get(0).getMaxLength() - 1; j >= 0; j--) {
                     if (tmp.getPositionOnRoad()[j] != null) {
                         switch (tmp.getPositionOnRoad()[j].getType()){
@@ -45,7 +45,7 @@ public class View {
             showLaneSeparator('=',x.getRightLanes().get(0).getMaxLength());
             for (int i = 0; i < x.getLeftLanes().size(); i++) {
                 Road.Lane tmp = x.getLeftLanes().get(i);
-//                System.out.println(tmp.getid());
+//                System.out.println(tmp.getId());
 
                 for (int j = 0; j <tmp.getMaxLength(); j++) {
                     if (tmp.getPositionOnRoad()[j] != null) {

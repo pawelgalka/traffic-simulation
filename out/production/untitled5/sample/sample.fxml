@@ -1,13 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane fx:id="mainGrid" alignment="center" hgap="10" prefHeight="1000.0" prefWidth="1000.0" style="-fx-background-image: url('file:C:/Users/pkgal/IdeaProjects/guifinal/graphics/modelcaly.jpg')" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <BorderPane minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: url('file:C:/Users/pkgal/IdeaProjects/untitled5/src/sample/droga1.jpg')" />
+      <Pane fx:id="pane" prefHeight="1000.0" prefWidth="1000.0">
+         <children>
+            <GridPane fx:id="grid" gridLinesVisible="true" prefHeight="1000.0" prefWidth="1000.0">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Pane fx:id="p1" onMouseClicked="#p1" prefHeight="200.0" prefWidth="200.0" />
+                  <Pane fx:id="p2" onMouseClicked="#p2" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+                  <Pane fx:id="p3" onMouseClicked="#p3" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" />
+                  <Pane fx:id="p4" onMouseClicked="#p4" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" />
+                  <Pane fx:id="p9" onMouseClicked="#p9" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Pane fx:id="p8" onMouseClicked="#p8" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Pane fx:id="p7" onMouseClicked="#p7" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <Pane fx:id="p6" onMouseClicked="#p6" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Pane fx:id="p5" onMouseClicked="#p5" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Pane fx:id="p11" onMouseClicked="#p11" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
+                  <Pane fx:id="p10" onMouseClicked="#p10" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" />
+                  <Pane fx:id="p12" onMouseClicked="#p12" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                  <Text fx:id="hour" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="249.33673667907715" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+         </children>
+      </Pane>
    </children>
    <columnConstraints>
       <ColumnConstraints />

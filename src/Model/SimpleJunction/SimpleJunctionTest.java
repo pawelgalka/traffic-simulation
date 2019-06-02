@@ -24,9 +24,9 @@ public class SimpleJunctionTest {
 
         OfiarKatyniaZarzecze.setRightLanes(new ArrayList<>(
                 Arrays.asList(
-                        OfiarKatyniaZarzecze.new Lane(15, Road.DIRECTION.RIGHT,true,0),
+                        OfiarKatyniaZarzecze.new Lane(15, Road.DIRECTION.RIGHT,true,2),
                         OfiarKatyniaZarzecze.new Lane(15, Road.DIRECTION.RIGHT,true,1),
-                        OfiarKatyniaZarzecze.new Lane(15, Road.DIRECTION.RIGHT,true,2))));
+                        OfiarKatyniaZarzecze.new Lane(15, Road.DIRECTION.RIGHT,true,0))));
 
 
         Road ZarzeczePrzegorzaly = new Road();
@@ -39,9 +39,9 @@ public class SimpleJunctionTest {
 
         ZarzeczePrzegorzaly.setRightLanes(new ArrayList<>(
                 Arrays.asList(
-                        ZarzeczePrzegorzaly.new Lane(20, Road.DIRECTION.RIGHT,true,0),
+                        ZarzeczePrzegorzaly.new Lane(20, Road.DIRECTION.RIGHT,true,2),
                         ZarzeczePrzegorzaly.new Lane(20, Road.DIRECTION.RIGHT,true,1),
-                        ZarzeczePrzegorzaly.new Lane(20, Road.DIRECTION.RIGHT,true,2))));
+                        ZarzeczePrzegorzaly.new Lane(20, Road.DIRECTION.RIGHT,true,0))));
 
         Road PrzegorzalyRuczaj = new Road();
         roadUpdateStructure.addRoad(PrzegorzalyRuczaj);
@@ -53,9 +53,9 @@ public class SimpleJunctionTest {
 
         PrzegorzalyRuczaj.setRightLanes(new ArrayList<>(
                 Arrays.asList(
-                        PrzegorzalyRuczaj.new Lane(10, Road.DIRECTION.RIGHT,true,0),
+                        PrzegorzalyRuczaj.new Lane(10, Road.DIRECTION.RIGHT,true,2),
                         PrzegorzalyRuczaj.new Lane(10, Road.DIRECTION.RIGHT,true,1),
-                        PrzegorzalyRuczaj.new Lane(10, Road.DIRECTION.RIGHT,true,2))));
+                        PrzegorzalyRuczaj.new Lane(10, Road.DIRECTION.RIGHT,true,0))));
 
         Road RuczajSolvaySquare = new Road();
         roadUpdateStructure.addRoad(RuczajSolvaySquare);
@@ -67,9 +67,9 @@ public class SimpleJunctionTest {
 
         RuczajSolvaySquare.setRightLanes(new ArrayList<>(
                 Arrays.asList(
-                        RuczajSolvaySquare.new Lane(10, Road.DIRECTION.RIGHT,true,0),
+                        RuczajSolvaySquare.new Lane(10, Road.DIRECTION.RIGHT,true,2),
                         RuczajSolvaySquare.new Lane(10, Road.DIRECTION.RIGHT,true,1),
-                        RuczajSolvaySquare.new Lane(10, Road.DIRECTION.RIGHT,true,2))));
+                        RuczajSolvaySquare.new Lane(10, Road.DIRECTION.RIGHT,true,0))));
 
 
         Road RuczajSolvay = new Road();
@@ -82,9 +82,9 @@ public class SimpleJunctionTest {
 
         RuczajSolvay.setRightLanes(new ArrayList<>(
                 Arrays.asList(
-                        RuczajSolvay.new Lane(10, Road.DIRECTION.RIGHT,true,0),
+                        RuczajSolvay.new Lane(10, Road.DIRECTION.RIGHT,true,2),
                         RuczajSolvay.new Lane(10, Road.DIRECTION.RIGHT,true,1),
-                        RuczajSolvay.new Lane(10, Road.DIRECTION.RIGHT,true,2))));
+                        RuczajSolvay.new Lane(10, Road.DIRECTION.RIGHT,true,0))));
 
 
         Road SolvayLagiewniki = new Road();
@@ -97,18 +97,18 @@ public class SimpleJunctionTest {
 
         SolvayLagiewniki.setRightLanes(new ArrayList<>(
                 Arrays.asList(
-                        SolvayLagiewniki.new Lane(10, Road.DIRECTION.RIGHT,true,0),
+                        SolvayLagiewniki.new Lane(10, Road.DIRECTION.RIGHT,true,2),
                         SolvayLagiewniki.new Lane(10, Road.DIRECTION.RIGHT,true,1),
-                        SolvayLagiewniki.new Lane(10, Road.DIRECTION.RIGHT,true,2))));
+                        SolvayLagiewniki.new Lane(10, Road.DIRECTION.RIGHT,true,0))));
 
 
         Road LagiewnikiKabelSquare = new Road();
         roadUpdateStructure.addRoad(LagiewnikiKabelSquare);
         LagiewnikiKabelSquare.setLeftLanes(new ArrayList<Road.Lane>(
                 Arrays.asList(
-                        LagiewnikiKabelSquare.new Lane(10, Road.DIRECTION.LEFT,true,0),
+                        LagiewnikiKabelSquare.new Lane(10, Road.DIRECTION.LEFT,true,2),
                         LagiewnikiKabelSquare.new Lane(10, Road.DIRECTION.LEFT,true,1),
-                        LagiewnikiKabelSquare.new Lane(10, Road.DIRECTION.LEFT,true,2))));
+                        LagiewnikiKabelSquare.new Lane(10, Road.DIRECTION.LEFT,true,0))));
 
 
         LagiewnikiKabelSquare.setRightLanes(new ArrayList<>(
@@ -121,15 +121,15 @@ public class SimpleJunctionTest {
         roadUpdateStructure.addRoad(LagiewnikiKabel);
         LagiewnikiKabel.setLeftLanes(new ArrayList<Road.Lane>(
                 Arrays.asList(
-                        LagiewnikiKabel.new Lane(10, Road.DIRECTION.LEFT,true,0),
+                        LagiewnikiKabel.new Lane(10, Road.DIRECTION.LEFT,true,2),
                         LagiewnikiKabel.new Lane(10, Road.DIRECTION.LEFT,true,1),
-                        LagiewnikiKabel.new Lane(10, Road.DIRECTION.LEFT,true,2))));
+                        LagiewnikiKabel.new Lane(10, Road.DIRECTION.LEFT,true,0))));
 
         LagiewnikiKabel.setRightLanes(new ArrayList<>(
                 Arrays.asList(
-                        LagiewnikiKabel.new Lane(10, Road.DIRECTION.RIGHT,true,0),
+                        LagiewnikiKabel.new Lane(10, Road.DIRECTION.RIGHT,true,2),
                         LagiewnikiKabel.new Lane(10, Road.DIRECTION.RIGHT,true,1),
-                        LagiewnikiKabel.new Lane(10, Road.DIRECTION.RIGHT,true,2))));
+                        LagiewnikiKabel.new Lane(10, Road.DIRECTION.RIGHT,true,0))));
 
 
         Road KabelPlaszowPart = new Road();
@@ -142,9 +142,9 @@ public class SimpleJunctionTest {
 
         KabelPlaszowPart.setRightLanes(new ArrayList<>(
                 Arrays.asList(
-                        KabelPlaszowPart.new Lane(10, Road.DIRECTION.RIGHT,true,0),
+                        KabelPlaszowPart.new Lane(10, Road.DIRECTION.RIGHT,true,2),
                         KabelPlaszowPart.new Lane(10, Road.DIRECTION.RIGHT,true,1),
-                        KabelPlaszowPart.new Lane(10, Road.DIRECTION.RIGHT,true,2))));
+                        KabelPlaszowPart.new Lane(10, Road.DIRECTION.RIGHT,true,0))));
 
 
         Road KabelPlaszow = new Road();
@@ -157,9 +157,9 @@ public class SimpleJunctionTest {
 
         KabelPlaszow.setRightLanes(new ArrayList<>(
                 Arrays.asList(
-                        KabelPlaszow.new Lane(10, Road.DIRECTION.RIGHT,true,0),
+                        KabelPlaszow.new Lane(10, Road.DIRECTION.RIGHT,true,2),
                         KabelPlaszow.new Lane(10, Road.DIRECTION.RIGHT,true,1),
-                        KabelPlaszow.new Lane(10, Road.DIRECTION.RIGHT,true,2))));
+                        KabelPlaszow.new Lane(10, Road.DIRECTION.RIGHT,true,0))));
 
 
         Road PlaszowLegPart = new Road();
@@ -172,9 +172,9 @@ public class SimpleJunctionTest {
 
         PlaszowLegPart.setRightLanes(new ArrayList<>(
                 Arrays.asList(
-                        PlaszowLegPart.new Lane(10, Road.DIRECTION.RIGHT,true,0),
+                        PlaszowLegPart.new Lane(10, Road.DIRECTION.RIGHT,true,2),
                         PlaszowLegPart.new Lane(10, Road.DIRECTION.RIGHT,true,1),
-                        PlaszowLegPart.new Lane(10, Road.DIRECTION.RIGHT,true,2))));
+                        PlaszowLegPart.new Lane(10, Road.DIRECTION.RIGHT,true,0))));
 
         Road PlaszowLeg = new Road();
         roadUpdateStructure.addRoad(PlaszowLeg);
@@ -186,9 +186,9 @@ public class SimpleJunctionTest {
 
         PlaszowLeg.setRightLanes(new ArrayList<>(
                 Arrays.asList(
-                        PlaszowLeg.new Lane(10, Road.DIRECTION.RIGHT,true,0),
+                        PlaszowLeg.new Lane(10, Road.DIRECTION.RIGHT,true,2),
                         PlaszowLeg.new Lane(10, Road.DIRECTION.RIGHT,true,1),
-                        PlaszowLeg.new Lane(10, Road.DIRECTION.RIGHT,true,2))));
+                        PlaszowLeg.new Lane(10, Road.DIRECTION.RIGHT,true,0))));
 
 
         Road LegDywizjonu308 = new Road();
@@ -201,9 +201,9 @@ public class SimpleJunctionTest {
 
         LegDywizjonu308.setRightLanes(new ArrayList<>(
                 Arrays.asList(
-                        LegDywizjonu308.new Lane(10, Road.DIRECTION.RIGHT,true,0),
+                        LegDywizjonu308.new Lane(10, Road.DIRECTION.RIGHT,true,2),
                         LegDywizjonu308.new Lane(10, Road.DIRECTION.RIGHT,true,1),
-                        LegDywizjonu308.new Lane(10, Road.DIRECTION.RIGHT,true,2))));
+                        LegDywizjonu308.new Lane(10, Road.DIRECTION.RIGHT,true,0))));
 
 
         Road Dywizjonu308Czyzyny = new Road();
@@ -216,9 +216,9 @@ public class SimpleJunctionTest {
 
         Dywizjonu308Czyzyny.setRightLanes(new ArrayList<>(
                 Arrays.asList(
-                        Dywizjonu308Czyzyny.new Lane(10, Road.DIRECTION.RIGHT,true,0),
+                        Dywizjonu308Czyzyny.new Lane(10, Road.DIRECTION.RIGHT,true,2),
                         Dywizjonu308Czyzyny.new Lane(10, Road.DIRECTION.RIGHT,true,1),
-                        Dywizjonu308Czyzyny.new Lane(10, Road.DIRECTION.RIGHT,true,2))));
+                        Dywizjonu308Czyzyny.new Lane(10, Road.DIRECTION.RIGHT,true,0))));
 
 
         Road CzyzynyMistrzejowice = new Road();
@@ -231,9 +231,9 @@ public class SimpleJunctionTest {
 
         CzyzynyMistrzejowice.setRightLanes(new ArrayList<>(
                 Arrays.asList(
-                        CzyzynyMistrzejowice.new Lane(10, Road.DIRECTION.RIGHT,true,0),
+                        CzyzynyMistrzejowice.new Lane(10, Road.DIRECTION.RIGHT,true,2),
                         CzyzynyMistrzejowice.new Lane(10, Road.DIRECTION.RIGHT,true,1),
-                        CzyzynyMistrzejowice.new Lane(10, Road.DIRECTION.RIGHT,true,2))));
+                        CzyzynyMistrzejowice.new Lane(10, Road.DIRECTION.RIGHT,true,0))));
 
 
         Road MistrzejowicePolsaduPart1 = new Road();
@@ -246,9 +246,9 @@ public class SimpleJunctionTest {
 
         MistrzejowicePolsaduPart1.setRightLanes(new ArrayList<>(
                 Arrays.asList(
-                        MistrzejowicePolsaduPart1.new Lane(10, Road.DIRECTION.RIGHT,true,0),
+                        MistrzejowicePolsaduPart1.new Lane(10, Road.DIRECTION.RIGHT,true,2),
                         MistrzejowicePolsaduPart1.new Lane(10, Road.DIRECTION.RIGHT,true,1),
-                        MistrzejowicePolsaduPart1.new Lane(10, Road.DIRECTION.RIGHT,true,2))));
+                        MistrzejowicePolsaduPart1.new Lane(10, Road.DIRECTION.RIGHT,true,0))));
 
         Road MistrzejowicePolsaduPart2 = new Road();
         roadUpdateStructure.addRoad(MistrzejowicePolsaduPart2);
@@ -260,9 +260,9 @@ public class SimpleJunctionTest {
 
         MistrzejowicePolsaduPart2.setRightLanes(new ArrayList<>(
                 Arrays.asList(
-                        MistrzejowicePolsaduPart2.new Lane(10, Road.DIRECTION.RIGHT,true,0),
+                        MistrzejowicePolsaduPart2.new Lane(10, Road.DIRECTION.RIGHT,true,2),
                         MistrzejowicePolsaduPart2.new Lane(10, Road.DIRECTION.RIGHT,true,1),
-                        MistrzejowicePolsaduPart2.new Lane(10, Road.DIRECTION.RIGHT,true,2))));
+                        MistrzejowicePolsaduPart2.new Lane(10, Road.DIRECTION.RIGHT,true,0))));
 
         Road PolsaduImbramowski = new Road();
         roadUpdateStructure.addRoad(PolsaduImbramowski);
@@ -274,9 +274,9 @@ public class SimpleJunctionTest {
 
         PolsaduImbramowski.setRightLanes(new ArrayList<>(
                 Arrays.asList(
-                        PolsaduImbramowski.new Lane(10, Road.DIRECTION.RIGHT,true,0),
+                        PolsaduImbramowski.new Lane(10, Road.DIRECTION.RIGHT,true,2),
                         PolsaduImbramowski.new Lane(10, Road.DIRECTION.RIGHT,true,1),
-                        PolsaduImbramowski.new Lane(10, Road.DIRECTION.RIGHT,true,2))));
+                        PolsaduImbramowski.new Lane(10, Road.DIRECTION.RIGHT,true,0))));
 
         Road ImbramowskiWobromskiPart1 = new Road();
         roadUpdateStructure.addRoad(ImbramowskiWobromskiPart1);
@@ -288,9 +288,9 @@ public class SimpleJunctionTest {
 
         ImbramowskiWobromskiPart1.setRightLanes(new ArrayList<>(
                 Arrays.asList(
-                        ImbramowskiWobromskiPart1.new Lane(10, Road.DIRECTION.RIGHT,true,0),
+                        ImbramowskiWobromskiPart1.new Lane(10, Road.DIRECTION.RIGHT,true,2),
                         ImbramowskiWobromskiPart1.new Lane(10, Road.DIRECTION.RIGHT,true,1),
-                        ImbramowskiWobromskiPart1.new Lane(10, Road.DIRECTION.RIGHT,true,2))));
+                        ImbramowskiWobromskiPart1.new Lane(10, Road.DIRECTION.RIGHT,true,0))));
 
         Road ImbramowskiWobromskiPart2 = new Road();
         roadUpdateStructure.addRoad(ImbramowskiWobromskiPart2);
@@ -302,9 +302,9 @@ public class SimpleJunctionTest {
 
         ImbramowskiWobromskiPart2.setRightLanes(new ArrayList<>(
                 Arrays.asList(
-                        ImbramowskiWobromskiPart2.new Lane(10, Road.DIRECTION.RIGHT,true,0),
+                        ImbramowskiWobromskiPart2.new Lane(10, Road.DIRECTION.RIGHT,true,2),
                         ImbramowskiWobromskiPart2.new Lane(10, Road.DIRECTION.RIGHT,true,1),
-                        ImbramowskiWobromskiPart2.new Lane(10, Road.DIRECTION.RIGHT,true,2))));
+                        ImbramowskiWobromskiPart2.new Lane(10, Road.DIRECTION.RIGHT,true,0))));
 
 
         Road WobromskiOfiarKatyniaPart1 = new Road();
@@ -317,9 +317,9 @@ public class SimpleJunctionTest {
 
         WobromskiOfiarKatyniaPart1.setRightLanes(new ArrayList<>(
                 Arrays.asList(
-                        WobromskiOfiarKatyniaPart1.new Lane(10, Road.DIRECTION.RIGHT,true,0),
+                        WobromskiOfiarKatyniaPart1.new Lane(10, Road.DIRECTION.RIGHT,true,2),
                         WobromskiOfiarKatyniaPart1.new Lane(10, Road.DIRECTION.RIGHT,true,1),
-                        WobromskiOfiarKatyniaPart1.new Lane(10, Road.DIRECTION.RIGHT,true,2))));
+                        WobromskiOfiarKatyniaPart1.new Lane(10, Road.DIRECTION.RIGHT,true,0))));
 
         Road WobromskiOfiarKatyniaPart2 = new Road();
         roadUpdateStructure.addRoad( WobromskiOfiarKatyniaPart2);
@@ -331,9 +331,9 @@ public class SimpleJunctionTest {
 
         WobromskiOfiarKatyniaPart2.setRightLanes(new ArrayList<>(
                 Arrays.asList(
-                        WobromskiOfiarKatyniaPart2.new Lane(10, Road.DIRECTION.RIGHT,true,0),
+                        WobromskiOfiarKatyniaPart2.new Lane(10, Road.DIRECTION.RIGHT,true,2),
                         WobromskiOfiarKatyniaPart2.new Lane(10, Road.DIRECTION.RIGHT,true,1),
-                        WobromskiOfiarKatyniaPart2.new Lane(10, Road.DIRECTION.RIGHT,true,2))));
+                        WobromskiOfiarKatyniaPart2.new Lane(10, Road.DIRECTION.RIGHT,true,0))));
 
 
         JunctionStructure ZarzeczeStructure = new JunctionStructure(OfiarKatyniaZarzecze,ZarzeczePrzegorzaly);
