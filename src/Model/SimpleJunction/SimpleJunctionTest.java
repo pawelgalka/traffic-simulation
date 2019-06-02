@@ -411,19 +411,19 @@ public class SimpleJunctionTest {
         Destination destinationStraight = new Destination(0,0);
         Vehicle tmp2 = new Vehicle(2, 6, 6,Vehicle.TYPE.CAR);
         //TODO add destination to constructor
-        OfiarKatyniaZarzecze.getRightLanes().get(0).addVehice(tmp2,0);
+        ZarzeczePrzegorzaly.getLeftLanes().get(0).addVehice(tmp2,0);
 
         int timer=0;
         while(true){
 
             System.out.println(tmp2);
-            View zajebistywidok = new View(OfiarKatyniaZarzecze);
+            View zajebistywidok = new View(ZarzeczePrzegorzaly);
             try {
                 zajebistywidok.view();
             } catch (Throwable throwable) {
                 throwable.printStackTrace();
             }
-            zajebistywidok = new View(ZarzeczePrzegorzaly);
+            zajebistywidok = new View(OfiarKatyniaZarzecze);
             try {
                 zajebistywidok.view();
             } catch (Throwable throwable) {

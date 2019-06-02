@@ -22,14 +22,14 @@ public class ManagerOf3Lanes {
                 junctionStructure.getNext().getRightLanes().get(2),true);
 
 
-        firstLeftLane = new LaneManager(junctionStructure.getPrevious().getLeftLanes().get(0),
-                junctionStructure.getNext().getLeftLanes().get(0),true);
+        firstLeftLane = new LaneManager(junctionStructure.getNext().getLeftLanes().get(0),
+                junctionStructure.getPrevious().getLeftLanes().get(0),true);
 
-        secondLeftLane = new LaneManager(junctionStructure.getPrevious().getLeftLanes().get(1),
-                junctionStructure.getNext().getLeftLanes().get(1),false);
+        secondLeftLane = new LaneManager(junctionStructure.getNext().getLeftLanes().get(1),
+                junctionStructure.getPrevious().getLeftLanes().get(1),false);
 
-        thirdLeftLane = new LaneManager(junctionStructure.getPrevious().getLeftLanes().get(2),
-                junctionStructure.getNext().getLeftLanes().get(2),true);
+        thirdLeftLane = new LaneManager(junctionStructure.getNext().getLeftLanes().get(2),
+                junctionStructure.getPrevious().getLeftLanes().get(2),true);
     }
 
     public void toNextRoad(){

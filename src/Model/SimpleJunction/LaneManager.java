@@ -21,7 +21,6 @@ public class LaneManager {
         HashMap tmp = previousLane.getAndClearVehiclesOutOfLane();
 
         for(Object x : tmp.keySet()){
-            System.out.println("kurwa");
             int pos = (int)tmp.get(x);
             if(((Vehicle)x).getDestination().getExit()==0){
                 nextLane.addVehice((Vehicle)x,pos);
